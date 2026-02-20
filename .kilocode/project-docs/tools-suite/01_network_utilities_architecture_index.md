@@ -14,14 +14,13 @@ This document serves as the master index and entry point for the OpenEther Netwo
 
 The OpenEther Network Utilities Suite is a collection of high-performance, client-side network engineering tools integrated into the OpenEther Astro portfolio site. Built with React 18 and D3.js v7, these tools provide interactive visualizations and real-time calculations for network engineers.
 
-### Tools Included
+### Tools Included (v1.0 - Initial Release)
 
 | Tool | Purpose | Status | Complexity |
 |------|---------|--------|------------|
-| **Subnet Calculator** | IPv4/IPv6 subnet calculations with binary visualization | 🚧 Planned | High |
-| **BGP Path Parser** | AS-PATH analysis and ASN graph visualization | 📋 Planned | Medium |
-| **VLSM Allocator** | Variable-length subnet masking with auto-sizing | 📋 Planned | High |
-| **OSPF Cost Calculator** | Interface cost calculations and shortest-path tree | 📋 Planned | Medium |
+| **Subnet Calculator** | IPv4/IPv6 subnet calculations with binary visualization | 🚧 In Progress | High |
+| **BGP Path Parser** | AS-PATH analysis and ASN graph visualization | 🚧 In Progress | Medium |
+| **VLSM Allocator** | Variable-length subnet masking with auto-sizing | 🚧 In Progress | High |
 
 ---
 
@@ -294,10 +293,9 @@ openether/src/
 ├── pages/
 │   └── tools/                      # Astro tool pages
 │       ├── index.astro            # Tools landing page
-│       ├── subnet-calculator.astro
-│       ├── bgp-parser.astro
-│       ├── vlsm-allocator.astro
-│       └── ospf-calculator.astro
+│       ├── subnet-calculator.astro # Subnet calculator
+│       ├── bgp-parser.astro       # BGP path parser
+│       └── vlsm-allocator.astro   # VLSM allocator
 │
 ├── components/
 │   └── tools/
@@ -307,8 +305,7 @@ openether/src/
 │       │   └── visualizations/    # D3 wrappers
 │       ├── subnet/                # Subnet-specific components
 │       ├── bgp/                   # BGP-specific components
-│       ├── vlsm/                  # VLSM-specific components
-│       └── ospf/                  # OSPF-specific components
+│       └── vlsm/                  # VLSM-specific components
 │
 ├── lib/                           # Pure TypeScript calculation engines
 │   └── network/
@@ -316,7 +313,6 @@ openether/src/
 │       ├── ipv6.ts                # IPv6 calculation logic
 │       ├── bgp.ts                 # BGP parsing logic
 │       ├── vlsm.ts                # VLSM allocation algorithm
-│       ├── ospf.ts                # OSPF cost calculations
 │       ├── types.ts               # Shared TypeScript interfaces
 │       └── validators.ts          # Input validation
 │
@@ -418,6 +414,9 @@ openether/src/
 - ✅ Binary visualization specifications
 - ✅ Directory structure and patterns
 - 🔄 Tool implementation (in progress)
+  - 🚧 Subnet Calculator (in progress)
+  - 🚧 BGP Looking Glass (pending)
+  - 🚧 VLSM Allocator (pending)
 
 ### Phase 2: Enhancement (Future)
 - User accounts and cloud storage (Firebase/Supabase)
@@ -457,6 +456,7 @@ openether/src/
 |------|---------|--------|--------|
 | 2026-02-20 | 1.0 | Initial creation | Claude (Architect) |
 | 2026-02-20 | 1.0 | Architecture approved (ADR-0003) | Chy (Project Lead) |
+| 2026-02-20 | 1.1 | Updated scope: 3 tools (no OSPF), added implementation tracking | Claude (Architect) |
 
 **Next Review**: After Tool #1 (Subnet Calculator) completion
 

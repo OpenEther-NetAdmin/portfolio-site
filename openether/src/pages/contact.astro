@@ -2,6 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/common/Container.astro';
 import Card from '../components/common/Card.astro';
+
+const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_ID || 'xpqjjybz';
+const formspreeUrl = `https://formspree.io/f/${FORMSPREE_ID}`;
+
+// Warn if environment variable is not set (development only)
+if (import.meta.env.DEV && !import.meta.env.PUBLIC_FORMSPREE_ID) {
+  console.warn('PUBLIC_FORMSPREE_ID not set in environment. Using default ID.');
+}
 ---
 
 <Layout title="Contact">
@@ -18,7 +26,7 @@ import Card from '../components/common/Card.astro';
           <Card>
             <form 
               class="space-y-4" 
-              action="https://formspree.io/f/xpqjjybz" 
+              action={formspreeUrl} 
               method="POST"
             >
               <div>
@@ -61,6 +69,34 @@ import Card from '../components/common/Card.astro';
                 Send Message
               </button>
             </form>
+            
+            <script>
+              // Client-side validation
+              const form = document.querySelector('form');
+              form.addEventListener('submit', (e) => {
+                const email = form.querySelector('#email').value;
+                const message = form.querySelector('#message').value.trim();
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                  alert('Please enter a valid email address');
+                  e.preventDefault();
+                  return;
+                }
+                
+                // Message length validation
+                if (message.length > 5000) {
+                  alert('Message is too long. Please limit to 5000 characters');
+                  e.preventDefault();
+                  return;
+                }
+                
+                // Sanitize message input
+                const messageInput = form.querySelector('#message');
+                messageInput.value = message.replace(/[<>]/g, '');
+              });
+            </script>
           </Card>
         </div>
         

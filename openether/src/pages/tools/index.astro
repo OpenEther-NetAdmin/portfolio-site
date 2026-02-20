@@ -9,33 +9,108 @@ import Container from '../../components/common/Container.astro';
       <h1 class="text-4xl font-bold text-slate-100 mb-4">Network Utilities</h1>
       <p class="text-slate-400 text-lg mb-8">
         High-performance network engineering tools for IPv4/IPv6 calculations, 
-        BGP analysis, VLSM allocation, and OSPF cost calculations.
+        BGP analysis, and VLSM allocation. All calculations run client-side for privacy and speed.
       </p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Tool cards will be added as tools are implemented -->
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-xl font-semibold text-slate-100 mb-2">Subnet Calculator</h2>
-          <p class="text-slate-400 mb-4">IPv4/IPv6 subnet calculations with binary visualization</p>
-          <span class="text-cyan-400 text-sm">Coming Soon</span>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Subnet Calculator -->
+        <a href="/tools/subnet-calculator" class="group">
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-cyan-500 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-cyan-900/50 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-slate-100 group-hover:text-cyan-400 transition-colors">
+                Subnet Calculator
+              </h2>
+            </div>
+            <p class="text-slate-400 mb-4">
+              IPv4 subnet calculations with binary visualization. Calculate network addresses, 
+              broadcast addresses, host ranges, and see the binary representation.
+            </p>
+            <div class="flex items-center text-cyan-400 text-sm">
+              <span>Open Tool</span>
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
         
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-xl font-semibold text-slate-100 mb-2">BGP Path Parser</h2>
-          <p class="text-slate-400 mb-4">AS-PATH analysis and ASN graph visualization</p>
-          <span class="text-cyan-400 text-sm">Coming Soon</span>
-        </div>
+        <!-- BGP Looking Glass -->
+        <a href="/tools/bgp-parser" class="group">
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-cyan-500 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-cyan-900/50 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-slate-100 group-hover:text-cyan-400 transition-colors">
+                BGP Looking Glass
+              </h2>
+            </div>
+            <p class="text-slate-400 mb-4">
+              Analyze BGP AS_PATH attributes, detect AS path prepending, identify private ASNs,
+              and visualize autonomous system paths.
+            </p>
+            <div class="flex items-center text-cyan-400 text-sm">
+              <span>Open Tool</span>
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
         
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-xl font-semibold text-slate-100 mb-2">VLSM Allocator</h2>
-          <p class="text-slate-400 mb-4">Variable-length subnet masking with auto-sizing</p>
-          <span class="text-cyan-400 text-sm">Coming Soon</span>
+        <!-- VLSM Allocator -->
+        <a href="/tools/vlsm-allocator" class="group">
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-cyan-500 transition-all hover:shadow-lg hover:shadow-cyan-500/10">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-cyan-900/50 rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-slate-100 group-hover:text-cyan-400 transition-colors">
+                VLSM Allocator
+              </h2>
+            </div>
+            <p class="text-slate-400 mb-4">
+              Efficiently allocate variable-length subnets from a base network. 
+              Automatic optimization for maximum address utilization.
+            </p>
+            <div class="flex items-center text-cyan-400 text-sm">
+              <span>Open Tool</span>
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-slate-800/50 rounded-lg border border-slate-700">
+          <h3 class="text-lg font-semibold text-slate-100 mb-2">🔒 Privacy First</h3>
+          <p class="text-slate-400 text-sm">
+            All calculations run entirely in your browser. No data is sent to any server.
+          </p>
         </div>
-        
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-xl font-semibold text-slate-100 mb-2">OSPF Calculator</h2>
-          <p class="text-slate-400 mb-4">Interface cost calculations and shortest-path tree</p>
-          <span class="text-cyan-400 text-sm">Coming Soon</span>
+        <div class="p-6 bg-slate-800/50 rounded-lg border border-slate-700">
+          <h3 class="text-lg font-semibold text-slate-100 mb-2">⚡ Lightning Fast</h3>
+          <p class="text-slate-400 text-sm">
+            Optimized calculation engines with sub-millisecond performance. No waiting for results.
+          </p>
+        </div>
+        <div class="p-6 bg-slate-800/50 rounded-lg border border-slate-700">
+          <h3 class="text-lg font-semibold text-slate-100 mb-2">💾 History Saved</h3>
+          <p class="text-slate-400 text-sm">
+            Your calculations are saved locally for quick reference. Export and import as needed.
+          </p>
         </div>
       </div>
     </div>

@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/common/Container.astro';
+import { VLSMAllocatorApp } from '../../components/tools/vlsm';
+---
+
+<Layout title="VLSM Allocator | OpenEther">
+  <Container>
+    <div class="py-12">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-slate-100 mb-4">VLSM Subnet Allocator</h1>
+        <p class="text-slate-400 text-lg">
+          Efficiently allocate variable-length subnets from a base network. 
+          Automatically calculates optimal subnet sizes based on host requirements.
+        </p>
+      </div>
+      
+      <VLSMAllocatorApp client:load />
+      
+      <div class="mt-8 p-6 bg-slate-800/50 rounded-lg border border-slate-700">
+        <h2 class="text-lg font-semibold text-slate-100 mb-3">How to Use</h2>
+        <ul class="text-slate-400 space-y-2">
+          <li>• Enter your base network address and CIDR prefix</li>
+          <li>• Add subnet requirements with names and required hosts</li>
+          <li>• Click "Allocate Subnets" to generate the VLSM allocation</li>
+          <li>• Subnets are allocated largest-first for optimal efficiency</li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</Layout>

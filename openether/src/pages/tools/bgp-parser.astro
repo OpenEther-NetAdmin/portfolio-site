@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/common/Container.astro';
+import { BGPLookingGlassApp } from '../../components/tools/bgp';
+---
+
+<Layout title="BGP Looking Glass | OpenEther">
+  <Container>
+    <div class="py-12">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-slate-100 mb-4">BGP Looking Glass</h1>
+        <p class="text-slate-400 text-lg">
+          Analyze BGP AS_PATH attributes, detect AS path prepending, and visualize
+          autonomous system paths.
+        </p>
+      </div>
+      
+      <BGPLookingGlassApp client:load />
+      
+      <div class="mt-8 p-6 bg-slate-800/50 rounded-lg border border-slate-700">
+        <h2 class="text-lg font-semibold text-slate-100 mb-3">How to Use</h2>
+        <ul class="text-slate-400 space-y-2">
+          <li>• Enter AS_PATH as space-separated ASNs (e.g., 174 3356 1299)</li>
+          <li>• Supports AS_SET notation: {'{'}300 400{'}'}</li>
+          <li>• Supports ASDOT notation: 1.1000</li>
+          <li>• The tool will detect prepending, private ASNs, and other issues</li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</Layout>

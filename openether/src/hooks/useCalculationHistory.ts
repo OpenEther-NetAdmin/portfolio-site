@@ -7,15 +7,15 @@ import { useState, useEffect, useCallback } from 'react';
 /**
  * A single history entry
  */
-export interface HistoryEntry<T> {
+export interface HistoryEntry<TInput, TResult = TInput> {
   /** Unique identifier for this entry */
   id: string;
   /** Unix timestamp when the calculation was performed */
   timestamp: number;
   /** The input data used for the calculation */
-  input: T;
+  input: TInput;
   /** The result of the calculation */
-  result: T;
+  result: TResult;
 }
 
 /**
@@ -31,11 +31,11 @@ interface UseCalculationHistoryOptions {
 /**
  * Return type for the useCalculationHistory hook
  */
-interface UseCalculationHistoryReturn<T> {
+interface UseCalculationHistoryReturn<TInput, TResult = TInput> {
   /** List of history entries, newest first */
-  history: HistoryEntry<T>[];
+  history: HistoryEntry<TInput, TResult>[];
   /** Add a new entry to history */
-  addEntry: (entry: Omit<HistoryEntry<T>, 'id' | 'timestamp'>) => void;
+  addEntry: (entry: Omit<HistoryEntry<TInput, TResult>, 'id' | 'timestamp'>) => void;
   /** Remove a specific entry by ID */
   removeEntry: (id: string) => void;
   /** Clear all history */
@@ -45,7 +45,7 @@ interface UseCalculationHistoryReturn<T> {
   /** Import history from JSON string */
   importHistory: (json: string) => boolean;
   /** Get a specific entry by ID */
-  getEntry: (id: string) => HistoryEntry<T> | undefined;
+  getEntry: (id: string) => HistoryEntry<TInput, TResult> | undefined;
   /** Number of entries in history */
   count: number;
 }
@@ -66,6 +66,26 @@ function safeJsonParse<T>(json: string): T | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * Save data to localStorage with quota management
+ * Prevents QuotaExceededError by managing storage size
+ */
+function saveToLocalStorage<T>(data: T[], key: string): void {
+  const serialized = JSON.stringify(data);
+  
+  // Check size limit (5MB)
+  const sizeInMB = new Blob([serialized]).size / (1024 * 1024);
+  if (sizeInMB > 5) {
+    console.warn(`History size (${sizeInMB.toFixed(2)}MB) exceeds 5MB limit, reducing entries`);
+    // Remove oldest 30% of entries
+    const reduced = data.slice(0, Math.floor(data.length * 0.7));
+    localStorage.setItem(key, JSON.stringify(reduced));
+    return;
+  }
+  
+  localStorage.setItem(key, serialized);
 }
 
 /**
@@ -99,17 +119,17 @@ function safeJsonParse<T>(json: string): T | null {
  * });
  * ```
  */
-export function useCalculationHistory<T>(
+export function useCalculationHistory<TInput, TResult = TInput>(
   key: string,
   options: UseCalculationHistoryOptions = {}
-): UseCalculationHistoryReturn<T> {
+): UseCalculationHistoryReturn<TInput, TResult> {
   const { limit = 50, version = 'v1' } = options;
 
   // Create the full storage key with version
   const storageKey = `${key}-${version}`;
 
   // Initialize state from localStorage
-  const [history, setHistory] = useState<HistoryEntry<T>[]>([]);
+  const [history, setHistory] = useState<HistoryEntry<TInput, TResult>[]>([]);
   const [isInitialized, setIsInitialized] = useState(false);
 
   // Load history from localStorage on mount
@@ -122,7 +142,7 @@ export function useCalculationHistory<T>(
     try {
       const stored = localStorage.getItem(storageKey);
       if (stored) {
-        const parsed = safeJsonParse<HistoryEntry<T>[]>(stored);
+        const parsed = safeJsonParse<HistoryEntry<TInput, TResult>[]>(stored);
         if (parsed && Array.isArray(parsed)) {
           // Validate entries have required fields
           const validEntries = parsed.filter(
@@ -150,17 +170,16 @@ export function useCalculationHistory<T>(
     }
 
     try {
-      localStorage.setItem(storageKey, JSON.stringify(history));
+      saveToLocalStorage(history, storageKey);
     } catch (error) {
-      // Handle localStorage errors (e.g., private mode, quota exceeded)
       console.error(`Failed to save history for key "${storageKey}":`, error);
     }
   }, [history, storageKey, isInitialized]);
 
   // Add a new entry
   const addEntry = useCallback(
-    (entry: Omit<HistoryEntry<T>, 'id' | 'timestamp'>) => {
-      const newEntry: HistoryEntry<T> = {
+    (entry: Omit<HistoryEntry<TInput, TResult>, 'id' | 'timestamp'>) => {
+      const newEntry: HistoryEntry<TInput, TResult> = {
         ...entry,
         id: generateId(),
         timestamp: Date.now(),
@@ -199,7 +218,7 @@ export function useCalculationHistory<T>(
 
   // Import history from JSON
   const importHistory = useCallback((json: string): boolean => {
-    const parsed = safeJsonParse<HistoryEntry<T>[]>(json);
+    const parsed = safeJsonParse<HistoryEntry<TInput, TResult>[]>(json);
     if (!parsed || !Array.isArray(parsed)) {
       return false;
     }
@@ -229,7 +248,7 @@ export function useCalculationHistory<T>(
 
   // Get a specific entry by ID
   const getEntry = useCallback(
-    (id: string): HistoryEntry<T> | undefined => {
+    (id: string): HistoryEntry<TInput, TResult> | undefined => {
       return history.find((entry) => entry.id === id);
     },
     [history]

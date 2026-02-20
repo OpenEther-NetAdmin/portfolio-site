@@ -33,7 +33,7 @@ export const IPv4Schema = z.string().refine(
 
     return true;
   },
-  { message: 'Invalid IPv4 address. Expected format: 0-255.0-255.0-255.0-255' }
+  { message: 'Invalid IPv4 address. Must be 4 octets 0-255, no leading zeros (e.g., 192.168.1.1)' }
 );
 
 /**
