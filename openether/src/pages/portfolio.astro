@@ -2,17 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/common/Container.astro';
 import Card from '../components/common/Card.astro';
-import Button from '../components/common/Button.astro';
 ---
 
 <Layout title="Portfolio">
   <Container>
     <!-- Bio Section -->
     <section class="py-12">
-      <h1 class="text-4xl font-heading font-bold mb-4 text-text">Your Name</h1>
+      <h1 class="text-4xl font-heading font-bold mb-4 text-text">Chris Cline</h1>
       <p class="text-xl text-textMuted max-w-2xl">
-        Network Security Consultant with expertise in penetration testing, 
-        security architecture, and network automation.
+        Network Security Engineer with 10+ years of hands-on experience designing, implementing, 
+        and maintaining secure network infrastructures that protect enterprise data, applications, and 
+        services. Expert in architecting and deploying security infrastructure including next-generation 
+        firewalls, VPNs, IDS/IPS, and network segmentation technologies.
       </p>
     </section>
 
@@ -21,18 +22,41 @@ import Button from '../components/common/Button.astro';
       <h2 class="text-2xl font-heading font-bold mb-8 text-text">Work Experience</h2>
       <div class="space-y-6">
         <Card>
-          <h3 class="text-xl font-bold text-text">Senior Network Security Engineer</h3>
-          <p class="text-primary text-sm mb-2">Company Name | 2020 - Present</p>
-          <p class="text-textMuted text-sm">
-            Led security initiatives, conducted penetration tests, and designed secure network architectures.
-          </p>
+          <h3 class="text-xl font-bold text-text">Senior Solutions Engineer</h3>
+          <p class="text-primary text-sm mb-2">Bedroc / Change Healthcare | Nashville, TN | March 2024 – Present</p>
+          <ul class="text-textMuted text-sm space-y-2">
+            <li>• Architected and deployed secure network infrastructure with comprehensive segmentation and micro-segmentation policies across 100+ healthcare facilities</li>
+            <li>• Designed Zero-Trust network zones and security architectures reducing lateral movement risk by 65%</li>
+            <li>• Implemented security features on enterprise switches, routers, and network infrastructure achieving 99.98% uptime</li>
+            <li>• Developed security automation using Ansible reducing deployment time by 87%</li>
+          </ul>
         </Card>
         <Card>
-          <h3 class="text-xl font-bold text-text">Network Administrator</h3>
-          <p class="text-primary text-sm mb-2">Previous Company | 2018 - 2020</p>
-          <p class="text-textMuted text-sm">
-            Managed enterprise network infrastructure and implemented security best practices.
-          </p>
+          <h3 class="text-xl font-bold text-text">Network Security Engineer Lead (Part-Time Consultant)</h3>
+          <p class="text-primary text-sm mb-2">Seven Seas Water Group | Tampa, FL | February 2023 – September 2024</p>
+          <ul class="text-textMuted text-sm space-y-2">
+            <li>• Architected, deployed, and maintained security infrastructure including firewalls, VPNs, and IDS systems across 25+ critical infrastructure facilities</li>
+            <li>• Deployed Wazuh SIEM platform monitoring network and security logs for threat detection, improving anomaly identification by 60%</li>
+            <li>• Performed vulnerability assessments and coordinated remediation efforts reducing critical vulnerabilities by 75%</li>
+          </ul>
+        </Card>
+        <Card>
+          <h3 class="text-xl font-bold text-text">Senior Network Engineer</h3>
+          <p class="text-primary text-sm mb-2">HCA Healthcare ITG | Nashville, TN | September 2018 – February 2023</p>
+          <ul class="text-textMuted text-sm space-y-2">
+            <li>• Designed, deployed, and maintained next-generation firewalls (Palo Alto, Cisco ASA/FTD, Checkpoint) and F5 security solutions across 180+ hospitals</li>
+            <li>• Maintained site-to-site and remote-access VPNs supporting 5,000+ users with 99.95% availability</li>
+            <li>• Monitored network and security logs using Splunk SIEM identifying and investigating security incidents</li>
+            <li>• Participated in root-cause analysis reducing security incidents by 45% year-over-year</li>
+          </ul>
+        </Card>
+        <Card>
+          <h3 class="text-xl font-bold text-text">Incident Response Technician (Team Lead)</h3>
+          <p class="text-primary text-sm mb-2">HCA Healthcare ITG | Nashville, TN | November 2016 – January 2018</p>
+          <ul class="text-textMuted text-sm space-y-2">
+            <li>• Led incident response team providing Tier-3 support for 500+ network and security incidents monthly</li>
+            <li>• Developed incident response procedures and mitigation strategies reducing MTTR by 40%</li>
+          </ul>
         </Card>
       </div>
     </section>
@@ -40,23 +64,65 @@ import Button from '../components/common/Button.astro';
     <!-- Skills -->
     <section class="py-12 bg-surface rounded-xl p-6">
       <h2 class="text-2xl font-heading font-bold mb-8 text-text">Skills</h2>
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div>
-          <h3 class="font-medium text-text mb-3">Network Technologies</h3>
+          <h3 class="font-medium text-text mb-3">Network Security</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Juniper</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">VPN</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Firewalls</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Palo Alto</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco Firepower</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Checkpoint</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">FortiGate</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Zero-Trust</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">IDS/IPS</span>
           </div>
         </div>
         <div>
-          <h3 class="font-medium text-text mb-3">Security Tools</h3>
+          <h3 class="font-medium text-text mb-3">Routing & Switching</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Nmap</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Metasploit</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Wireshark</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Burp Suite</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">BGP</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">OSPF</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">EIGRP</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">VLANs</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco ACI</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">SD-WAN</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium text-text mb-3">Monitoring & SIEM</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Splunk</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Wazuh</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">SolarWinds</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">NetBrain</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium text-text mb-3">Cloud & Automation</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Azure</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">AWS</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Python</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Ansible</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">IaC</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium text-text mb-3">Compliance Frameworks</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">NIST CSF</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">PCI-DSS</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">HIPAA</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">NERC-CIP</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">CIS Controls</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium text-text mb-3">VPN Technologies</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">IPSec</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">SSL VPN</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Site-to-Site</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco ISE</span>
           </div>
         </div>
       </div>
@@ -66,10 +132,24 @@ import Button from '../components/common/Button.astro';
     <section class="py-12">
       <h2 class="text-2xl font-heading font-bold mb-8 text-text">Certifications</h2>
       <div class="flex flex-wrap gap-4">
-        <Card class="bg-surface">CISSP</Card>
-        <Card class="bg-surface">CEH</Card>
-        <Card class="bg-surface">CCNP Security</Card>
+        <Card class="bg-surface">CCNA</Card>
+        <Card class="bg-surface">CCNA Security</Card>
+        <Card class="bg-surface">CompTIA Linux+</Card>
+        <Card class="bg-surface">CompTIA Project+</Card>
+        <Card class="bg-surface">CompTIA A+</Card>
+        <Card class="bg-surface">CompTIA Network+</Card>
+        <Card class="bg-surface">CompTIA Security+</Card>
       </div>
+    </section>
+
+    <!-- Education -->
+    <section class="py-12">
+      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Education</h2>
+      <Card>
+        <h3 class="text-xl font-bold text-text">Bachelor of Science, Information Technology</h3>
+        <p class="text-primary text-sm mb-2">Information Security & Assurance</p>
+        <p class="text-textMuted text-sm">Western Governors University | Salt Lake City, UT | 2016 – 2019</p>
+      </Card>
     </section>
   </Container>
 </Layout>

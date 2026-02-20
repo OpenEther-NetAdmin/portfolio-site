@@ -1,0 +1,143 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Build and Unit Tests
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: openether/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./openether
+        run: npm ci
+      
+      - name: Run linter
+        working-directory: ./openether
+        run: npm run lint || true # Allow failure if lint not configured
+      
+      - name: Build project
+        working-directory: ./openether
+        run: npm run build
+      
+      - name: Run unit tests with coverage
+        working-directory: ./openether
+        run: npm run test:coverage
+      
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: openether/coverage/
+          retention-days: 7
+
+  # E2E Tests
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: openether/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./openether
+        run: npm ci
+      
+      - name: Install Playwright browsers
+        working-directory: ./openether
+        run: npx playwright install --with-deps chromium firefox
+      
+      - name: Build project
+        working-directory: ./openether
+        run: npm run build
+      
+      - name: Run E2E tests
+        working-directory: ./openether
+        run: npm run test:e2e
+      
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: openether/playwright-report/
+          retention-days: 7
+
+  # Lighthouse Performance Audit
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: openether/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./openether
+        run: npm ci
+      
+      - name: Build project
+        working-directory: ./openether
+        run: npm run build
+      
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+      
+      - name: Run Lighthouse CI
+        working-directory: ./openether
+        run: |
+          lhci autorun --upload.target=temporary-public-storage || true
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  # Type Check
+  typecheck:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: openether/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./openether
+        run: npm ci
+      
+      - name: Run TypeScript type check
+        working-directory: ./openether
+        run: npx tsc --noEmit || true # Allow failure for now

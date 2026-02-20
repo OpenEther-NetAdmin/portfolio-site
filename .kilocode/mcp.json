@@ -1,1 +1,28 @@
-{"mcpServers":{"memory":{"command":"npx","args":["-y","@modelcontextprotocol/server-memory"],"env":{"MEMORY_FILE_PATH":"/home/madmin/opt/openether-portfolio/.kilocode/memory/memory.jsonl"},"alwaysAllow":["read_graph"]},"sequentialthinking":{"command":"docker","args":["run","--rm","-i","mcp/sequentialthinking"],"disabled":false,"alwaysAllow":[]}}}
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/madmin/opt/openether-portfolio/.kilocode/memory/memory.jsonl"
+      },
+      "alwaysAllow": [
+        "read_graph"
+      ]
+    },
+    "sequentialthinking": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/sequentialthinking"
+      ],
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}
