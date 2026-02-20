@@ -1,0 +1,163 @@
+# OpenEher System Architecture
+
+## High-Level Architecture
+
+```mermaid
+graph TB
+    subgraph "User Layer"
+        Browser[Web Browser]
+        Mobile[Mobile Device]
+    end
+
+    subgraph "Internet"
+        DNS[DNS]
+        CDN[CDN - Optional]
+    end
+
+    subgraph "VPS Hosting"
+        Nginx[Nginx Web Server]
+        StaticFiles[Static HTML/CSS/JS]
+        Assets[Images/Fonts]
+    end
+
+    subgraph "Build System"
+        Astro[Astro Build]
+        MDX[MDX Content]
+        Tailwind[Tailwind CSS]
+    end
+
+    subgraph "External Services"
+        FormService[Form Service<br/>Formspree/Netlify]
+        Analytics[Analytics<br/>Optional]
+    end
+
+    Browser --> DNS
+    Mobile --> DNS
+    DNS --> Nginx
+    Nginx --> StaticFiles
+    Nginx --> Assets
+    
+    Astro --> StaticFiles
+    Astro --> Assets
+    MDX --> Astro
+    Tailwind --> Astro
+    
+    Browser --> FormService
+    Browser --> Analytics
+```
+
+## Page Structure
+
+```mermaid
+graph LR
+    Home[Home<br/>/] --> Portfolio[Portfolio<br/>/portfolio]
+    Home --> Blog[Blog<br/>/blog]
+    Home --> Services[Services<br/>/services]
+    Home --> Contact[Contact<br/>/contact]
+    
+    Blog --> Post[Blog Post<br/>/blog/:slug]
+```
+
+## Component Architecture
+
+```mermaid
+graph TB
+    subgraph "Shared Components"
+        Header[Header<br/>Navigation]
+        Footer[Footer]
+        SEO[SEO Meta]
+    end
+
+    subgraph "Page Components"
+        HomePage[Home Page]
+        PortfolioPage[Portfolio Page]
+        BlogPage[Blog Index]
+        PostPage[Blog Post]
+        ServicesPage[Services Page]
+        ContactPage[Contact Page]
+    end
+
+    subgraph "UI Components"
+        Button[Button]
+        Card[Card]
+        Badge[Badge]
+        Form[Contact Form]
+    end
+
+    Header --> HomePage
+    Header --> PortfolioPage
+    Header --> BlogPage
+    Header --> ServicesPage
+    Header --> ContactPage
+    
+    Footer --> HomePage
+    Footer --> PortfolioPage
+    Footer --> BlogPage
+    Footer --> ServicesPage
+    Footer --> ContactPage
+    
+    SEO --> HomePage
+    SEO --> PortfolioPage
+    SEO --> BlogPage
+    SEO --> PostPage
+    SEO --> ServicesPage
+    SEO --> ContactPage
+    
+    Button --> HomePage
+    Button --> PortfolioPage
+    Button --> ServicesPage
+    Button --> ContactPage
+    
+    Card --> PortfolioPage
+    Card --> BlogPage
+    
+    Form --> ContactPage
+    Badge --> PortfolioPage
+    Badge --> BlogPage
+```
+
+## Data Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Nginx
+    participant StaticFiles
+    participant FormService
+    
+    Note over User,Nginx: Static Site - No Server-Side Processing
+    
+    User->>Nginx: Request /portfolio
+    Nginx->>StaticFiles: Serve static HTML
+    StaticFiles-->>User: HTML + CSS + JS
+    
+    User->>Nginx: Request /blog/first-post
+    Nginx->>StaticFiles: Serve blog post HTML
+    StaticFiles-->>User: Blog article
+    
+    Note over User,FormService: Form Submission (Client-Side)
+    
+    User->>FormService: Submit contact form
+    FormService-->>User: Success/Confirmation
+    FormService->>You: Email notification
+```
+
+## Deployment Topology
+
+```mermaid
+graph LR
+    subgraph "Development"
+        Local[Local Dev<br/>localhost:4321]
+    end
+    
+    subgraph "VPS Production"
+        Nginx_prod[Production<br/>Nginx]
+        WebRoot[/var/www<br/>/openether]
+    end
+    
+    subgraph "Content"
+        Git[Git Repository]
+        MDXFiles[MDX Blog Posts]
+    end
+    
+    Local--build-->Git

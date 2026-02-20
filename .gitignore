@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+
+# Knowledge Base DB
+knowledge-base/db/qdrant_data/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Kilocode
+.kilocode/transcripts/
+.kilocode/handoffs/
+.kilocode/memory/kb_queries_*.md
+.kilocode/memory/kb_updates_*.md
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

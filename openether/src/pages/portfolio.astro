@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/common/Container.astro';
+import Card from '../components/common/Card.astro';
+import Button from '../components/common/Button.astro';
+---
+
+<Layout title="Portfolio">
+  <Container>
+    <!-- Bio Section -->
+    <section class="py-12">
+      <h1 class="text-4xl font-heading font-bold mb-4 text-text">Your Name</h1>
+      <p class="text-xl text-textMuted max-w-2xl">
+        Network Security Consultant with expertise in penetration testing, 
+        security architecture, and network automation.
+      </p>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="py-12">
+      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Work Experience</h2>
+      <div class="space-y-6">
+        <Card>
+          <h3 class="text-xl font-bold text-text">Senior Network Security Engineer</h3>
+          <p class="text-primary text-sm mb-2">Company Name | 2020 - Present</p>
+          <p class="text-textMuted text-sm">
+            Led security initiatives, conducted penetration tests, and designed secure network architectures.
+          </p>
+        </Card>
+        <Card>
+          <h3 class="text-xl font-bold text-text">Network Administrator</h3>
+          <p class="text-primary text-sm mb-2">Previous Company | 2018 - 2020</p>
+          <p class="text-textMuted text-sm">
+            Managed enterprise network infrastructure and implemented security best practices.
+          </p>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="py-12 bg-surface rounded-xl p-6">
+      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Skills</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-medium text-text mb-3">Network Technologies</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Juniper</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">VPN</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Firewalls</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium text-text mb-3">Security Tools</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Nmap</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Metasploit</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Wireshark</span>
+            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Burp Suite</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-12">
+      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Certifications</h2>
+      <div class="flex flex-wrap gap-4">
+        <Card class="bg-surface">CISSP</Card>
+        <Card class="bg-surface">CEH</Card>
+        <Card class="bg-surface">CCNP Security</Card>
+      </div>
+    </section>
+  </Container>
+</Layout>

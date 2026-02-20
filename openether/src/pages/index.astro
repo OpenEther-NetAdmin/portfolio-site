@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/common/Container.astro';
+import Button from '../components/common/Button.astro';
+import Card from '../components/common/Card.astro';
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="py-20 md:py-32">
+    <Container>
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6 text-text">
+          Secure. Connect. Automate.
+        </h1>
+        <p class="text-xl text-textMuted mb-8">
+          OpenEther provides expert network security consulting and 
+          penetration testing services for modern enterprises.
+        </p>
+        <div class="flex gap-4 flex-wrap">
+          <Button href="/services">View Services</Button>
+          <Button href="/contact" variant="outline">Contact Me</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="py-16 bg-surface">
+    <Container>
+      <h2 class="text-3xl font-heading font-bold mb-12 text-text">Services</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <Card>
+          <h3 class="text-xl font-bold mb-3 text-text">Network Security</h3>
+          <p class="text-textMuted text-sm">
+            Comprehensive security assessments and vulnerability testing for your network infrastructure.
+          </p>
+        </Card>
+        <Card>
+          <h3 class="text-xl font-bold mb-3 text-text">Penetration Testing</h3>
+          <p class="text-textMuted text-sm">
+            Ethical hacking services to identify and remediate security weaknesses before attackers do.
+          </p>
+        </Card>
+        <Card>
+          <h3 class="text-xl font-bold mb-3 text-text">Security Architecture</h3>
+          <p class="text-textMuted text-sm">
+            Expert guidance on designing and implementing secure network architectures.
+          </p>
+        </Card>
+      </div>
+      <div class="mt-8 text-center">
+        <Button href="/services" variant="outline">View All Services</Button>
+      </div>
+    </Container>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16">
+    <Container>
+      <h2 class="text-3xl font-heading font-bold mb-8 text-text">About OpenEther</h2>
+      <div class="max-w-2xl">
+        <p class="text-textMuted text-lg mb-6">
+          OpenEther is a network security consulting firm dedicated to helping organizations 
+          secure their digital infrastructure. With expertise in penetration testing, 
+          security architecture, and network automation, we help our clients stay ahead 
+          of emerging threats.
+        </p>
+        <p class="text-textMuted text-lg">
+          We believe in building secure, resilient networks that support modern business 
+          requirements while maintaining robust protection against evolving cyber threats.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-surface">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold mb-4 text-text">
+          Ready to secure your network?
+        </h2>
+        <p class="text-textMuted mb-8">
+          Get in touch to discuss your security needs.
+        </p>
+        <Button href="/contact">Get in Touch</Button>
+      </div>
+    </Container>
+  </section>
+</Layout>
