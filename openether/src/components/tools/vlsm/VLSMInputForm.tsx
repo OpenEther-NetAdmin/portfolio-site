@@ -41,7 +41,7 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
       {/* Base Network */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="base-network" className="block text-sm font-medium text-slate-300 mb-2">
+          <label htmlFor="base-network" className="block text-sm font-medium text-textMuted mb-2">
             Base Network Address
           </label>
           <input
@@ -50,11 +50,11 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
             value={baseNetwork}
             onChange={(e) => onBaseNetworkChange(e.target.value)}
             placeholder="10.0.0.0"
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="w-full px-4 py-2 bg-surface border border-white/5 rounded-lg text-text placeholder-textMuted/50 focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
           />
         </div>
         <div>
-          <label htmlFor="base-cidr" className="block text-sm font-medium text-slate-300 mb-2">
+          <label htmlFor="base-cidr" className="block text-sm font-medium text-textMuted mb-2">
             CIDR Prefix (/{baseCIDR})
           </label>
           <div className="flex items-center space-x-4">
@@ -65,7 +65,7 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
               max="30"
               value={baseCIDR}
               onChange={(e) => onBaseCIDRChange(parseInt(e.target.value, 10))}
-              className="flex-1 h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+              className="flex-1 h-2 bg-surface border border-white/5 rounded-lg appearance-none cursor-pointer accent-primary"
             />
             <input
               type="number"
@@ -73,7 +73,7 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
               max="30"
               value={baseCIDR}
               onChange={(e) => onBaseCIDRChange(parseInt(e.target.value, 10))}
-              className="w-20 px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-slate-100 text-center focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-20 px-3 py-2 bg-surface border border-white/5 rounded-lg text-text text-center focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
             />
           </div>
         </div>
@@ -82,13 +82,13 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
       {/* Subnet Requests */}
       <div>
         <div className="flex justify-between items-center mb-3">
-          <label className="block text-sm font-medium text-slate-300">
+          <label className="block text-sm font-medium text-textMuted">
             Subnet Requirements
           </label>
           <button
             type="button"
             onClick={onAddRequest}
-            className="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-sm rounded-lg transition-colors"
+            className="px-3 py-1 bg-primary hover:bg-primaryHover text-background text-sm rounded-lg transition-colors font-medium"
           >
             + Add Subnet
           </button>
@@ -96,14 +96,14 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
 
         <div className="space-y-3">
           {requests.map((request, index) => (
-            <div key={index} className="flex items-center space-x-3 p-3 bg-slate-700/50 rounded-lg">
+            <div key={index} className="flex items-center space-x-3 p-3 bg-surface/80 rounded-lg border border-white/5">
               <div className="flex-1">
                 <input
                   type="text"
                   value={request.name}
                   onChange={(e) => onUpdateRequest(index, { name: e.target.value })}
                   placeholder="Subnet name"
-                  className="w-full px-3 py-2 bg-slate-600 border border-slate-500 rounded text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-3 py-2 bg-surface border border-white/10 rounded text-text text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
                 />
               </div>
               <div className="w-32">
@@ -113,13 +113,13 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
                   onChange={(e) => onUpdateRequest(index, { requiredHosts: parseInt(e.target.value, 10) || 1 })}
                   min="1"
                   placeholder="Hosts"
-                  className="w-full px-3 py-2 bg-slate-600 border border-slate-500 rounded text-slate-100 text-sm text-center focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-3 py-2 bg-surface border border-white/10 rounded text-text text-sm text-center focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
                 />
               </div>
               <button
                 type="button"
                 onClick={() => onRemoveRequest(index)}
-                className="p-2 text-red-400 hover:text-red-300 hover:bg-red-900/30 rounded transition-colors"
+                className="p-2 text-red-400 hover:text-red-300 hover:bg-red-900/20 rounded transition-colors"
                 disabled={requests.length <= 1}
               >
                 ✕
@@ -131,7 +131,7 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
 
       {/* Error Display */}
       {error && (
-        <div className="p-3 bg-red-900/30 border border-red-800 rounded-lg text-red-300 text-sm">
+        <div className="p-3 bg-red-900/10 border border-red-800/30 rounded-lg text-red-300 text-sm">
           {error}
         </div>
       )}
@@ -143,8 +143,8 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
           disabled={requests.length === 0}
           className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
             requests.length > 0
-              ? 'bg-cyan-600 hover:bg-cyan-500 text-white'
-              : 'bg-slate-600 text-slate-400 cursor-not-allowed'
+              ? 'bg-primary hover:bg-primaryHover text-background'
+              : 'bg-surface text-textMuted cursor-not-allowed border border-white/5'
           }`}
         >
           Allocate Subnets
@@ -152,7 +152,7 @@ const VLSMInputForm: React.FC<VLSMInputFormProps> = ({
         <button
           type="button"
           onClick={onReset}
-          className="px-4 py-2 bg-slate-600 hover:bg-slate-500 text-slate-200 rounded-lg transition-colors"
+          className="px-4 py-2 bg-surface hover:bg-surface/80 text-text rounded-lg border border-white/5 transition-colors"
         >
           Reset
         </button>

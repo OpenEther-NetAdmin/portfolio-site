@@ -8,8 +8,8 @@ import { BGPLookingGlassApp } from '../../components/tools/bgp';
   <Container>
     <div class="py-12">
       <div class="mb-8">
-        <h1 class="text-4xl font-bold text-slate-100 mb-4">BGP Looking Glass</h1>
-        <p class="text-slate-400 text-lg">
+        <h1 class="text-4xl font-bold text-text mb-4">BGP Looking Glass</h1>
+        <p class="text-textMuted text-lg font-light">
           Analyze BGP AS_PATH attributes, detect AS path prepending, and visualize
           autonomous system paths.
         </p>
@@ -17,9 +17,12 @@ import { BGPLookingGlassApp } from '../../components/tools/bgp';
       
       <BGPLookingGlassApp client:load />
       
-      <div class="mt-8 p-6 bg-slate-800/50 rounded-lg border border-slate-700">
-        <h2 class="text-lg font-semibold text-slate-100 mb-3">How to Use</h2>
-        <ul class="text-slate-400 space-y-2">
+      <div class="mt-8 p-6 bg-surface rounded-xl border border-white/5">
+        <h2 class="text-lg font-semibold text-text mb-3 font-mono text-primary flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+          HOW TO USE
+        </h2>
+        <ul class="text-textMuted space-y-2 text-sm">
           <li>• Enter AS_PATH as space-separated ASNs (e.g., 174 3356 1299)</li>
           <li>• Supports AS_SET notation: {'{'}300 400{'}'}</li>
           <li>• Supports ASDOT notation: 1.1000</li>

@@ -37,33 +37,21 @@ const SubnetResults: React.FC<SubnetResultsProps> = ({ result }) => {
       {/* Special Properties */}
       <div className="flex flex-wrap gap-2 mt-4">
         {result.isPrivate && (
-          <span className="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-sm">
+          <span className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
             Private IP Range
           </span>
         )}
         {result.isLoopback && (
-          <span className="px-3 py-1 bg-yellow-900/50 text-yellow-400 rounded-full text-sm">
+          <span className="px-3 py-1 bg-yellow-900/10 text-yellow-400 border border-yellow-700/30 rounded-full text-sm font-medium">
             Loopback
           </span>
         )}
-        {result.cidr === 32 && (
-          <span className="px-3 py-1 bg-cyan-900/50 text-cyan-400 rounded-full text-sm">
-            /32 - Single Host
-          </span>
-        )}
-        {result.cidr === 31 && (
-          <span className="px-3 py-1 bg-cyan-900/50 text-cyan-400 rounded-full text-sm">
-            /31 - Point-to-Point Link
-          </span>
-        )}
-        {result.cidr === 30 && (
-          <span className="px-3 py-1 bg-cyan-900/50 text-cyan-400 rounded-full text-sm">
-            /30 - Typical WAN Link
-          </span>
-        )}
-        {result.cidr === 24 && (
-          <span className="px-3 py-1 bg-cyan-900/50 text-cyan-400 rounded-full text-sm">
-            /24 - Class C Network
+        {(result.cidr === 32 || result.cidr === 31 || result.cidr === 30 || result.cidr === 24) && (
+          <span className="px-3 py-1 bg-surface border border-white/10 text-textMuted rounded-full text-sm font-medium">
+            {result.cidr === 32 ? '/32 - Single Host' : 
+             result.cidr === 31 ? '/31 - Point-to-Point Link' :
+             result.cidr === 30 ? '/30 - Typical WAN Link' :
+             '/24 - Class C Network'}
           </span>
         )}
       </div>
@@ -79,9 +67,9 @@ const ResultRow: React.FC<{
   value: string;
   highlight?: boolean;
 }> = ({ label, value, highlight }) => (
-  <div className="flex justify-between items-center p-3 bg-slate-700/50 rounded-lg">
-    <span className="text-slate-400 text-sm">{label}</span>
-    <span className={`font-mono ${highlight ? 'text-cyan-400 font-semibold' : 'text-slate-200'}`}>
+  <div className="flex justify-between items-center p-3 bg-surface/80 rounded-lg border border-white/5">
+    <span className="text-textMuted text-sm">{label}</span>
+    <span className={`font-mono ${highlight ? 'text-primary font-semibold' : 'text-text'}`}>
       {value}
     </span>
   </div>
@@ -95,9 +83,9 @@ const StatCard: React.FC<{
   value: string;
   badge?: boolean;
 }> = ({ label, value, badge }) => (
-  <div className="p-4 bg-slate-700/50 rounded-lg text-center">
-    <div className="text-slate-400 text-xs uppercase tracking-wide mb-1">{label}</div>
-    <div className={`text-lg font-semibold ${badge ? 'text-cyan-400' : 'text-slate-100'}`}>
+  <div className="p-4 bg-surface/80 rounded-lg text-center border border-white/5">
+    <div className="text-textMuted text-xs uppercase tracking-wide mb-1">{label}</div>
+    <div className={`text-lg font-semibold ${badge ? 'text-primary' : 'text-text'}`}>
       {value}
     </div>
   </div>

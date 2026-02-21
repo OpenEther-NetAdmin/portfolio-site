@@ -66,8 +66,8 @@ const BGPLookingGlassApp: React.FC = () => {
   return (
     <div className="bgp-looking-glass-app space-y-6">
       {/* Input Form */}
-      <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-        <h2 className="text-xl font-semibold text-slate-100 mb-4">
+      <div className="bg-surface rounded-lg p-6 border border-white/5">
+        <h2 className="text-xl font-semibold text-text mb-4">
           BGP Looking Glass
         </h2>
         <BGPInputForm
@@ -84,16 +84,16 @@ const BGPLookingGlassApp: React.FC = () => {
       {/* Results */}
       {result && (
         <>
-          <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-            <h3 className="text-lg font-semibold text-slate-100 mb-4">
+          <div className="bg-surface rounded-lg p-6 border border-white/5">
+            <h3 className="text-lg font-semibold text-text mb-4">
               AS_PATH Analysis
             </h3>
             <BGPResults result={result} />
           </div>
 
           {/* AS Path Visualization */}
-          <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-            <h3 className="text-lg font-semibold text-slate-100 mb-4">
+          <div className="bg-surface rounded-lg p-6 border border-white/5">
+            <h3 className="text-lg font-semibold text-text mb-4">
               AS Path Visualization
             </h3>
             <ASPathVisualization asns={result.asPath.asns} />
@@ -103,14 +103,14 @@ const BGPLookingGlassApp: React.FC = () => {
 
       {/* History Panel */}
       {history.length > 0 && (
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div className="bg-surface rounded-lg p-6 border border-white/5">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-slate-100">
+            <h3 className="text-lg font-semibold text-text">
               Analysis History
             </h3>
             <button
               onClick={clearHistory}
-              className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
+              className="text-sm text-textMuted hover:text-text transition-colors"
             >
               Clear History
             </button>
@@ -120,12 +120,12 @@ const BGPLookingGlassApp: React.FC = () => {
               <button
                 key={entry.id}
                 onClick={() => handleLoadFromHistory(entry)}
-                className="w-full text-left p-3 bg-slate-700/50 rounded hover:bg-slate-700 transition-colors"
+                className="w-full text-left p-3 bg-surface/80 rounded hover:bg-surface transition-colors"
               >
-                <span className="text-cyan-400 font-mono text-sm">
+                <span className="text-primary font-mono text-sm">
                   {entry.input.asPath}
                 </span>
-                <span className="text-slate-400 text-sm ml-2">
+                <span className="text-textMuted text-sm ml-2">
                   ({entry.result.asnCount} ASNs)
                 </span>
               </button>

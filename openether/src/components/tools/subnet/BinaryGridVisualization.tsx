@@ -86,8 +86,8 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
           .attr('height', cellSize)
           .attr('rx', 4)
           .attr('ry', 4)
-          .attr('fill', isNetworkBit ? '#0891b2' : '#334155')
-          .attr('stroke', isNetworkBit ? '#06b6d4' : '#475569')
+          .attr('fill', isNetworkBit ? '#22c55e' : '#0f172a') // primary : surface
+          .attr('stroke', isNetworkBit ? '#4ade80' : '#1e293b') // primaryHover : border
           .attr('stroke-width', 2)
           .attr('class', 'bit-cell')
           .style('cursor', 'pointer');
@@ -100,7 +100,7 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
           .attr('font-size', `${cellSize * 0.5}px`)
           .attr('font-family', 'monospace')
           .attr('font-weight', 'bold')
-          .attr('fill', isNetworkBit ? '#ffffff' : '#94a3b8')
+          .attr('fill', isNetworkBit ? '#020617' : '#94a3b8') // background : textMuted
           .text(bitValue);
 
         // Hover effect
@@ -109,13 +109,13 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
             d3.select(this)
               .transition()
               .duration(150)
-              .attr('fill', isNetworkBit ? '#06b6d4' : '#475569');
+              .attr('fill', isNetworkBit ? '#4ade80' : '#1e293b'); // primaryHover : border
           })
           .on('mouseleave', function () {
             d3.select(this)
               .transition()
               .duration(150)
-              .attr('fill', isNetworkBit ? '#0891b2' : '#334155');
+              .attr('fill', isNetworkBit ? '#22c55e' : '#0f172a'); // primary : surface
           });
       }
 
@@ -126,7 +126,7 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
         .attr('text-anchor', 'middle')
         .attr('font-size', '14px')
         .attr('font-weight', '600')
-        .attr('fill', '#f1f5f9')
+        .attr('fill', '#f1f5f9') // text
         .text(octetDecimal);
 
       // Octet separator (except after last octet)
@@ -137,7 +137,7 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
           .attr('text-anchor', 'middle')
           .attr('font-size', '16px')
           .attr('font-weight', 'bold')
-          .attr('fill', '#64748b')
+          .attr('fill', '#94a3b8') // textMuted
           .text('.');
       }
     }
@@ -151,7 +151,7 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
         .attr('y', innerHeight / 2 - cellSize / 2 - 10)
         .attr('text-anchor', 'middle')
         .attr('font-size', '12px')
-        .attr('fill', '#06b6d4')
+        .attr('fill', '#22c55e') // primary
         .text(`Network (${cidr} bits)`);
     }
 
@@ -161,7 +161,7 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
         .attr('y', innerHeight / 2 - cellSize / 2 - 10)
         .attr('text-anchor', 'middle')
         .attr('font-size', '12px')
-        .attr('fill', '#94a3b8')
+        .attr('fill', '#94a3b8') // textMuted
         .text(`Host (${32 - cidr} bits)`);
     }
 
@@ -176,15 +176,15 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
       .attr('width', 12)
       .attr('height', 12)
       .attr('rx', 2)
-      .attr('fill', '#0891b2')
-      .attr('stroke', '#06b6d4')
+      .attr('fill', '#22c55e') // primary
+      .attr('stroke', '#4ade80') // primaryHover
       .attr('stroke-width', 1);
 
     g.append('text')
       .attr('x', legendStartX + 18)
       .attr('y', legendY)
       .attr('font-size', '11px')
-      .attr('fill', '#94a3b8')
+      .attr('fill', '#94a3b8') // textMuted
       .text('Network bits');
 
     // Host bit legend
@@ -194,15 +194,15 @@ const BinaryGridVisualization: React.FC<BinaryGridVisualizationProps> = ({
       .attr('width', 12)
       .attr('height', 12)
       .attr('rx', 2)
-      .attr('fill', '#334155')
-      .attr('stroke', '#475569')
+      .attr('fill', '#0f172a') // surface
+      .attr('stroke', '#1e293b') // border
       .attr('stroke-width', 1);
 
     g.append('text')
       .attr('x', legendStartX + 118)
       .attr('y', legendY)
       .attr('font-size', '11px')
-      .attr('fill', '#94a3b8')
+      .attr('fill', '#94a3b8') // textMuted
       .text('Host bits');
 
   }, [ipAddress, cidr, binaryRepresentation, dimensions]);

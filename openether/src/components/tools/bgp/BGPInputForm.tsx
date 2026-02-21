@@ -31,7 +31,7 @@ const BGPInputForm: React.FC<BGPInputFormProps> = ({
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* AS_PATH Input */}
       <div>
-        <label htmlFor="as-path" className="block text-sm font-medium text-slate-300 mb-2">
+        <label htmlFor="as-path" className="block text-sm font-medium text-textMuted mb-2">
           AS_PATH (space-separated ASNs)
         </label>
         <textarea
@@ -40,21 +40,21 @@ const BGPInputForm: React.FC<BGPInputFormProps> = ({
           onChange={(e) => onAsPathChange(e.target.value)}
           placeholder="e.g., 174 3356 1299 15133"
           rows={3}
-          className={`w-full px-4 py-2 bg-slate-700 border rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors font-mono text-sm ${
-            error ? 'border-red-500' : 'border-slate-600'
+          className={`w-full px-4 py-2 bg-surface border rounded-lg text-text placeholder-textMuted/50 focus:outline-none focus:ring-2 focus:ring-primary transition-colors font-mono text-sm ${
+            error ? 'border-red-500' : 'border-white/5'
           }`}
         />
         {error && (
           <p className="mt-1 text-sm text-red-400">{error}</p>
         )}
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-textMuted/60">
           Supports: Simple paths (100 200 300), AS_SETs ({'{'}300 400{'}'}), ASDOT notation (1.1000)
         </p>
       </div>
 
       {/* IP Version Toggle */}
       <div>
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-sm font-medium text-textMuted mb-2">
           IP Version
         </label>
         <div className="flex space-x-4">
@@ -64,9 +64,9 @@ const BGPInputForm: React.FC<BGPInputFormProps> = ({
               name="ip-version"
               checked={isIPv4}
               onChange={() => onIsIPv4Change(true)}
-              className="mr-2 accent-cyan-500"
+              className="mr-2 accent-primary"
             />
-            <span className="text-slate-300">IPv4</span>
+            <span className="text-textMuted">IPv4</span>
           </label>
           <label className="flex items-center">
             <input
@@ -74,9 +74,9 @@ const BGPInputForm: React.FC<BGPInputFormProps> = ({
               name="ip-version"
               checked={!isIPv4}
               onChange={() => onIsIPv4Change(false)}
-              className="mr-2 accent-cyan-500"
+              className="mr-2 accent-primary"
             />
-            <span className="text-slate-300">IPv6</span>
+            <span className="text-textMuted">IPv6</span>
           </label>
         </div>
       </div>
@@ -88,8 +88,8 @@ const BGPInputForm: React.FC<BGPInputFormProps> = ({
           disabled={!asPath.trim()}
           className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
             asPath.trim()
-              ? 'bg-cyan-600 hover:bg-cyan-500 text-white'
-              : 'bg-slate-600 text-slate-400 cursor-not-allowed'
+              ? 'bg-primary hover:bg-primaryHover text-background'
+              : 'bg-surface text-textMuted cursor-not-allowed'
           }`}
         >
           Analyze AS_PATH
@@ -97,7 +97,7 @@ const BGPInputForm: React.FC<BGPInputFormProps> = ({
         <button
           type="button"
           onClick={onReset}
-          className="px-4 py-2 bg-slate-600 hover:bg-slate-500 text-slate-200 rounded-lg transition-colors"
+          className="px-4 py-2 bg-surface hover:bg-surface/80 text-text rounded-lg transition-colors"
         >
           Reset
         </button>

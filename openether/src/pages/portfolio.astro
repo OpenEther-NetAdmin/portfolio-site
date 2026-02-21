@@ -7,149 +7,132 @@ import Card from '../components/common/Card.astro';
 <Layout title="Portfolio">
   <Container>
     <!-- Bio Section -->
-    <section class="py-12">
-      <h1 class="text-4xl font-heading font-bold mb-4 text-text">Chris Cline</h1>
-      <p class="text-xl text-textMuted max-w-2xl">
+    <section class="py-24 relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        OPERATOR IDENTITY: VERIFIED
+      </div>
+      <h1 class="text-5xl md:text-8xl font-heading font-bold mb-6 text-text tracking-tight">Chris Cline</h1>
+      <p class="text-xl text-textMuted max-w-3xl font-light leading-relaxed">
         Network Security Engineer with 10+ years of hands-on experience designing, implementing, 
-        and maintaining secure network infrastructures that protect enterprise data, applications, and 
-        services. Expert in architecting and deploying security infrastructure including next-generation 
-        firewalls, VPNs, IDS/IPS, and network segmentation technologies.
+        and maintaining secure network infrastructures. Expert in architecting Zero-Trust environments 
+        and high-availability security systems for enterprise-scale operations.
       </p>
     </section>
 
     <!-- Work Experience -->
     <section class="py-12">
-      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Work Experience</h2>
-      <div class="space-y-6">
-        <Card>
-          <h3 class="text-xl font-bold text-text">Senior Solutions Engineer</h3>
-          <p class="text-primary text-sm mb-2">Bedroc / Change Healthcare | Nashville, TN | March 2024 – Present</p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• Architected and deployed secure network infrastructure with comprehensive segmentation and micro-segmentation policies across 100+ healthcare facilities</li>
-            <li>• Designed Zero-Trust network zones and security architectures reducing lateral movement risk by 65%</li>
-            <li>• Implemented security features on enterprise switches, routers, and network infrastructure achieving 99.98% uptime</li>
-            <li>• Developed security automation using Ansible reducing deployment time by 87%</li>
+      <div class="flex items-center gap-4 mb-12">
+        <h2 class="text-3xl font-heading font-bold text-text whitespace-nowrap">Professional History</h2>
+        <div class="h-px w-full bg-white/5"></div>
+      </div>
+      <div class="space-y-8">
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-text">Senior Solutions Engineer</h3>
+              <p class="text-primary font-mono text-sm mt-1">Bedroc / Change Healthcare</p>
+            </div>
+            <span class="text-textMuted text-xs font-mono">2024 – PRESENT</span>
+          </div>
+          <ul class="text-textMuted text-sm space-y-3 leading-relaxed">
+            <li>• Architected and deployed secure network infrastructure with comprehensive segmentation across 100+ healthcare facilities.</li>
+            <li>• Designed Zero-Trust network zones reducing lateral movement risk by 65%.</li>
+            <li>• Developed security automation using Ansible reducing deployment time by 87%.</li>
           </ul>
         </Card>
-        <Card>
-          <h3 class="text-xl font-bold text-text">Network Security Engineer Lead (Part-Time Consultant)</h3>
-          <p class="text-primary text-sm mb-2">Seven Seas Water Group | Tampa, FL | February 2023 – September 2024</p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• Architected, deployed, and maintained security infrastructure including firewalls, VPNs, and IDS systems across 25+ critical infrastructure facilities</li>
-            <li>• Deployed Wazuh SIEM platform monitoring network and security logs for threat detection, improving anomaly identification by 60%</li>
-            <li>• Performed vulnerability assessments and coordinated remediation efforts reducing critical vulnerabilities by 75%</li>
+        
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-text">Network Security Lead</h3>
+              <p class="text-primary font-mono text-sm mt-1">Seven Seas Water Group</p>
+            </div>
+            <span class="text-textMuted text-xs font-mono">2023 – 2024</span>
+          </div>
+          <ul class="text-textMuted text-sm space-y-3 leading-relaxed">
+            <li>• Architected security infrastructure across 25+ critical infrastructure facilities.</li>
+            <li>• Deployed Wazuh SIEM platform monitoring logs for real-time threat detection.</li>
+            <li>• Performed vulnerability assessments reducing critical exposures by 75%.</li>
           </ul>
         </Card>
-        <Card>
-          <h3 class="text-xl font-bold text-text">Senior Network Engineer</h3>
-          <p class="text-primary text-sm mb-2">HCA Healthcare ITG | Nashville, TN | September 2018 – February 2023</p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• Designed, deployed, and maintained next-generation firewalls (Palo Alto, Cisco ASA/FTD, Checkpoint) and F5 security solutions across 180+ hospitals</li>
-            <li>• Maintained site-to-site and remote-access VPNs supporting 5,000+ users with 99.95% availability</li>
-            <li>• Monitored network and security logs using Splunk SIEM identifying and investigating security incidents</li>
-            <li>• Participated in root-cause analysis reducing security incidents by 45% year-over-year</li>
-          </ul>
-        </Card>
-        <Card>
-          <h3 class="text-xl font-bold text-text">Incident Response Technician (Team Lead)</h3>
-          <p class="text-primary text-sm mb-2">HCA Healthcare ITG | Nashville, TN | November 2016 – January 2018</p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• Led incident response team providing Tier-3 support for 500+ network and security incidents monthly</li>
-            <li>• Developed incident response procedures and mitigation strategies reducing MTTR by 40%</li>
+
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-text">Senior Network Engineer</h3>
+              <p class="text-primary font-mono text-sm mt-1">HCA Healthcare ITG</p>
+            </div>
+            <span class="text-textMuted text-xs font-mono">2018 – 2023</span>
+          </div>
+          <ul class="text-textMuted text-sm space-y-3 leading-relaxed">
+            <li>• Maintained next-generation firewalls and F5 security solutions across 180+ hospitals.</li>
+            <li>• Monitored network and security logs using Splunk SIEM for incident investigation.</li>
+            <li>• Participated in root-cause analysis reducing security incidents by 45%.</li>
           </ul>
         </Card>
       </div>
     </section>
 
     <!-- Skills -->
-    <section class="py-12 bg-surface rounded-xl p-6">
-      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Skills</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div>
-          <h3 class="font-medium text-text mb-3">Network Security</h3>
+    <section class="py-16">
+      <div class="mb-12">
+        <p class="text-primary font-mono text-sm mb-2">// TECHNICAL STACK</p>
+        <h2 class="text-3xl font-heading font-bold text-text">Core Competencies</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-6 bg-surface/30 rounded-xl border border-white/5">
+          <h3 class="font-bold text-text mb-4 font-mono text-primary uppercase text-sm">Security Architecture</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Palo Alto</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco Firepower</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Checkpoint</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">FortiGate</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Zero-Trust</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">IDS/IPS</span>
+            {["Palo Alto", "Cisco Firepower", "FortiGate", "Zero-Trust", "IDS/IPS", "Segmentation"].map(skill => (
+              <span class="px-2 py-1 bg-background border border-white/5 rounded text-xs text-textMuted">{skill}</span>
+            ))}
           </div>
         </div>
-        <div>
-          <h3 class="font-medium text-text mb-3">Routing & Switching</h3>
+        <div class="p-6 bg-surface/30 rounded-xl border border-white/5">
+          <h3 class="font-bold text-text mb-4 font-mono text-primary uppercase text-sm">Infrastructure</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">BGP</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">OSPF</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">EIGRP</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">VLANs</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco ACI</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">SD-WAN</span>
+            {["BGP", "OSPF", "Cisco ACI", "SD-WAN", "VLANs", "VXLAN"].map(skill => (
+              <span class="px-2 py-1 bg-background border border-white/5 rounded text-xs text-textMuted">{skill}</span>
+            ))}
           </div>
         </div>
-        <div>
-          <h3 class="font-medium text-text mb-3">Monitoring & SIEM</h3>
+        <div class="p-6 bg-surface/30 rounded-xl border border-white/5">
+          <h3 class="font-bold text-text mb-4 font-mono text-primary uppercase text-sm">Operations</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Splunk</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Wazuh</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">SolarWinds</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">NetBrain</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="font-medium text-text mb-3">Cloud & Automation</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Azure</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">AWS</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Python</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Ansible</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">IaC</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="font-medium text-text mb-3">Compliance Frameworks</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">NIST CSF</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">PCI-DSS</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">HIPAA</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">NERC-CIP</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">CIS Controls</span>
-          </div>
-        </div>
-        <div>
-          <h3 class="font-medium text-text mb-3">VPN Technologies</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">IPSec</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">SSL VPN</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Site-to-Site</span>
-            <span class="px-3 py-1 bg-background rounded-full text-sm text-textMuted">Cisco ISE</span>
+            {["Splunk", "Wazuh", "Python", "Ansible", "NIST CSF", "PCI-DSS"].map(skill => (
+              <span class="px-2 py-1 bg-background border border-white/5 rounded text-xs text-textMuted">{skill}</span>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Certifications -->
-    <section class="py-12">
-      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Certifications</h2>
-      <div class="flex flex-wrap gap-4">
-        <Card class="bg-surface">CCNA</Card>
-        <Card class="bg-surface">CCNA Security</Card>
-        <Card class="bg-surface">CompTIA Linux+</Card>
-        <Card class="bg-surface">CompTIA Project+</Card>
-        <Card class="bg-surface">CompTIA A+</Card>
-        <Card class="bg-surface">CompTIA Network+</Card>
-        <Card class="bg-surface">CompTIA Security+</Card>
-      </div>
-    </section>
+    <!-- Certifications & Education -->
+    <div class="grid lg:grid-cols-2 gap-12 mb-24">
+      <section>
+        <h2 class="text-2xl font-heading font-bold mb-8 text-text">Certifications</h2>
+        <div class="grid grid-cols-2 gap-4 font-mono">
+          {["CCNA", "CCNA SECURITY", "LINUX+", "PROJECT+", "A+", "NETWORK+", "SECURITY+"].map(cert => (
+            <div class="p-3 bg-surface border border-white/5 rounded text-xs text-text flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+              {cert}
+            </div>
+          ))}
+        </div>
+      </section>
 
-    <!-- Education -->
-    <section class="py-12">
-      <h2 class="text-2xl font-heading font-bold mb-8 text-text">Education</h2>
-      <Card>
-        <h3 class="text-xl font-bold text-text">Bachelor of Science, Information Technology</h3>
-        <p class="text-primary text-sm mb-2">Information Security & Assurance</p>
-        <p class="text-textMuted text-sm">Western Governors University | Salt Lake City, UT | 2016 – 2019</p>
-      </Card>
-    </section>
+      <section>
+        <h2 class="text-2xl font-heading font-bold mb-8 text-text">Education</h2>
+        <Card>
+          <h3 class="text-xl font-bold text-text">B.S. Information Technology</h3>
+          <p class="text-primary font-mono text-sm mt-1">Information Security & Assurance</p>
+          <p class="text-textMuted text-xs mt-4">Western Governors University | 2019</p>
+        </Card>
+      </section>
+    </div>
   </Container>
 </Layout>

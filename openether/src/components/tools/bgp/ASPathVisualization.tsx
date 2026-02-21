@@ -61,14 +61,14 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
         .attr('y1', y)
         .attr('x2', x2 - nodeRadius - 5)
         .attr('y2', y)
-        .attr('stroke', '#475569')
+        .attr('stroke', '#1e293b') // border color
         .attr('stroke-width', 2)
         .attr('stroke-dasharray', '4,2');
 
       // Arrow head
       g.append('polygon')
         .attr('points', `${x2 - nodeRadius - 5},${y - 5} ${x2 - nodeRadius},${y} ${x2 - nodeRadius - 5},${y + 5}`)
-        .attr('fill', '#475569');
+        .attr('fill', '#1e293b'); // border color
     }
 
     // Draw nodes
@@ -83,8 +83,8 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
         .attr('cx', x)
         .attr('cy', y)
         .attr('r', nodeRadius)
-        .attr('fill', isFirst ? '#0891b2' : isLast ? '#059669' : '#334155')
-        .attr('stroke', isFirst ? '#06b6d4' : isLast ? '#10b981' : '#475569')
+        .attr('fill', isFirst ? '#0f172a' : isLast ? '#22c55e' : '#0f172a') // Neighbor: surface, Origin: primary, Transit: surface
+        .attr('stroke', isFirst ? '#22c55e' : isLast ? '#4ade80' : '#1e293b') // Neighbor: primary, Origin: primaryHover, Transit: border
         .attr('stroke-width', 2)
         .style('cursor', 'pointer');
 
@@ -96,7 +96,7 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
         .attr('font-size', `${Math.min(12, nodeRadius * 0.5)}px`)
         .attr('font-family', 'monospace')
         .attr('font-weight', 'bold')
-        .attr('fill', '#ffffff')
+        .attr('fill', isLast ? '#020617' : '#f1f5f9') // Text dark on primary background
         .text(asn);
 
       // Label (Neighbor/Origin)
@@ -106,7 +106,7 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
           .attr('y', y - nodeRadius - 10)
           .attr('text-anchor', 'middle')
           .attr('font-size', '10px')
-          .attr('fill', '#06b6d4')
+          .attr('fill', '#22c55e') // primary
           .text('Neighbor AS');
       }
       if (isLast) {
@@ -115,7 +115,7 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
           .attr('y', y - nodeRadius - 10)
           .attr('text-anchor', 'middle')
           .attr('font-size', '10px')
-          .attr('fill', '#10b981')
+          .attr('fill', '#4ade80') // primaryHover
           .text('Origin AS');
       }
 
@@ -143,8 +143,8 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
       .attr('cx', 10)
       .attr('cy', legendY)
       .attr('r', 6)
-      .attr('fill', '#0891b2')
-      .attr('stroke', '#06b6d4')
+      .attr('fill', '#0f172a')
+      .attr('stroke', '#22c55e')
       .attr('stroke-width', 1);
     g.append('text')
       .attr('x', 22)
@@ -158,8 +158,8 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
       .attr('cx', 110)
       .attr('cy', legendY)
       .attr('r', 6)
-      .attr('fill', '#059669')
-      .attr('stroke', '#10b981')
+      .attr('fill', '#22c55e')
+      .attr('stroke', '#4ade80')
       .attr('stroke-width', 1);
     g.append('text')
       .attr('x', 122)
@@ -173,8 +173,8 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
       .attr('cx', 200)
       .attr('cy', legendY)
       .attr('r', 6)
-      .attr('fill', '#334155')
-      .attr('stroke', '#475569')
+      .attr('fill', '#0f172a')
+      .attr('stroke', '#1e293b')
       .attr('stroke-width', 1);
     g.append('text')
       .attr('x', 212)
@@ -187,7 +187,7 @@ const ASPathVisualization: React.FC<ASPathVisualizationProps> = ({ asns }) => {
 
   if (asns.length === 0) {
     return (
-      <div className="text-slate-400 text-center py-8">
+      <div className="text-textMuted text-center py-8">
         No ASNs to visualize
       </div>
     );

@@ -8,8 +8,8 @@ import { VLSMAllocatorApp } from '../../components/tools/vlsm';
   <Container>
     <div class="py-12">
       <div class="mb-8">
-        <h1 class="text-4xl font-bold text-slate-100 mb-4">VLSM Subnet Allocator</h1>
-        <p class="text-slate-400 text-lg">
+        <h1 class="text-4xl font-bold text-text mb-4">VLSM Subnet Allocator</h1>
+        <p class="text-textMuted text-lg font-light">
           Efficiently allocate variable-length subnets from a base network. 
           Automatically calculates optimal subnet sizes based on host requirements.
         </p>
@@ -17,9 +17,12 @@ import { VLSMAllocatorApp } from '../../components/tools/vlsm';
       
       <VLSMAllocatorApp client:load />
       
-      <div class="mt-8 p-6 bg-slate-800/50 rounded-lg border border-slate-700">
-        <h2 class="text-lg font-semibold text-slate-100 mb-3">How to Use</h2>
-        <ul class="text-slate-400 space-y-2">
+      <div class="mt-8 p-6 bg-surface rounded-xl border border-white/5">
+        <h2 class="text-lg font-semibold text-text mb-3 font-mono text-primary flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+          HOW TO USE
+        </h2>
+        <ul class="text-textMuted space-y-2 text-sm">
           <li>• Enter your base network address and CIDR prefix</li>
           <li>• Add subnet requirements with names and required hosts</li>
           <li>• Click "Allocate Subnets" to generate the VLSM allocation</li>

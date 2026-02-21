@@ -8,107 +8,130 @@ import Button from '../components/common/Button.astro';
 <Layout title="Services">
   <Container>
     <!-- Header -->
-    <section class="py-12 text-center">
-      <h1 class="text-4xl font-heading font-bold mb-4 text-text">Services</h1>
-      <p class="text-xl text-textMuted max-w-2xl mx-auto">
-        Expert network security consulting to protect your infrastructure.
+    <section class="py-24 text-center relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        CAPABILITIES OVERVIEW
+      </div>
+      <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6 text-text tracking-tight">Technical Services</h1>
+      <p class="text-xl text-textMuted max-w-2xl mx-auto font-light leading-relaxed">
+        Adversarial security methodologies and high-resilience architecture design 
+        for critical digital infrastructure.
       </p>
     </section>
 
     <!-- Services Grid -->
     <section class="py-12">
-      <div class="grid md:grid-cols-2 gap-6">
-        <Card>
-          <h3 class="text-xl font-bold mb-3 text-text">Network Security Assessment</h3>
-          <p class="text-textMuted text-sm mb-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-text">Network Security Assessment</h3>
+            <span class="text-primary/40 font-mono text-xs">SEC-01</span>
+          </div>
+          <p class="text-textMuted mb-6 leading-relaxed">
             Comprehensive evaluation of your network security posture. We identify vulnerabilities, 
-            assess risks, and provide actionable recommendations.
+            assess systemic risks, and provide high-fidelity remediation paths.
           </p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• Vulnerability scanning</li>
-            <li>• Risk assessment</li>
-            <li>• Security audit</li>
-            <li>• Recommendations report</li>
+          <ul class="text-textMuted text-sm space-y-3 font-mono">
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> VULNERABILITY SCANNING</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> SYSTEMIC RISK ASSESSMENT</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> FULL SECURITY AUDIT</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> STRATEGIC REMEDIATION</li>
           </ul>
         </Card>
         
-        <Card>
-          <h3 class="text-xl font-bold mb-3 text-text">Penetration Testing</h3>
-          <p class="text-textMuted text-sm mb-4">
-            Ethical hacking to identify security weaknesses before attackers do. 
-            We simulate real-world attacks to test your defenses.
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-text">Penetration Testing</h3>
+            <span class="text-primary/40 font-mono text-xs">SEC-02</span>
+          </div>
+          <p class="text-textMuted mb-6 leading-relaxed">
+            Ethical hacking to identify security weaknesses before adversaries exploit them. 
+            We simulate real-world attack vectors to pressure-test your defenses.
           </p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• External/internal testing</li>
-            <li>• Web application testing</li>
-            <li>• Detailed findings report</li>
-            <li>• Remediation guidance</li>
+          <ul class="text-textMuted text-sm space-y-3 font-mono">
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> EXTERNAL/INTERNAL ATTACK SIMULATION</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> WEB APPLICATION EXPLOITATION</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> LATERAL MOVEMENT TESTING</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> REMEDIATION STRATEGY</li>
           </ul>
         </Card>
         
-        <Card>
-          <h3 class="text-xl font-bold mb-3 text-text">Security Architecture Review</h3>
-          <p class="text-textMuted text-sm mb-4">
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-text">Security Architecture Review</h3>
+            <span class="text-primary/40 font-mono text-xs">ARCH-01</span>
+          </div>
+          <p class="text-textMuted mb-6 leading-relaxed">
             Expert review of your network architecture design. We ensure security 
-            is built into your infrastructure from the ground up.
+            is an immutable property of your infrastructure from the initial draft.
           </p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• Design review</li>
-            <li>• Best practices consultation</li>
-            <li>• Implementation guidance</li>
-            <li>• Security architecture diagrams</li>
+          <ul class="text-textMuted text-sm space-y-3 font-mono">
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> BLUEPRINT VULNERABILITY ANALYSIS</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> BEST PRACTICES ENFORCEMENT</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> IMPLEMENTATION ROADMAPPING</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> ARCHITECTURAL DIAGRAMMING</li>
           </ul>
         </Card>
         
-        <Card>
-          <h3 class="text-xl font-bold mb-3 text-text">Incident Response</h3>
-          <p class="text-textMuted text-sm mb-4">
-            When a security incident occurs, we help you respond quickly and effectively 
-            to minimize damage and recover fast.
+        <Card hover={true}>
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-text">Incident Response</h3>
+            <span class="text-primary/40 font-mono text-xs">OPS-01</span>
+          </div>
+          <p class="text-textMuted mb-6 leading-relaxed">
+            When a security incident occurs, we provide rapid surgical response 
+            to neutralize threats, minimize damage, and accelerate recovery.
           </p>
-          <ul class="text-textMuted text-sm space-y-2">
-            <li>• 24/7 emergency response</li>
-            <li>• Forensic analysis</li>
-            <li>• Remediation support</li>
-            <li>• Post-incident review</li>
+          <ul class="text-textMuted text-sm space-y-3 font-mono">
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> 24/7 SURGICAL RESPONSE</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> DIGITAL FORENSIC ANALYSIS</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> THREAT NEUTRALIZATION</li>
+            <li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> POST-INCIDENT RECOVERY</li>
           </ul>
         </Card>
       </div>
     </section>
 
     <!-- Process -->
-    <section class="py-12 bg-surface rounded-xl p-8">
-      <h2 class="text-2xl font-heading font-bold mb-6 text-text">How I Work</h2>
-      <ol class="space-y-4 text-textMuted">
-        <li class="flex gap-4">
-          <span class="text-primary font-bold">1.</span>
-          <div>
-            <strong class="text-text">Discovery Call</strong>
-            <p class="text-sm">Understand your needs, challenges, and goals.</p>
+    <section class="py-16 bg-surface/50 rounded-2xl border border-white/5 p-8 md:p-12 mb-16">
+      <div class="mb-12">
+        <p class="text-primary font-mono text-sm mb-2">// ENGAGEMENT PIPELINE</p>
+        <h2 class="text-3xl font-heading font-bold text-text">Operational Methodology</h2>
+      </div>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="relative">
+          <span class="text-6xl font-bold text-primary/10 absolute -top-8 -left-2 z-0">01</span>
+          <div class="relative z-10">
+            <h4 class="text-text font-bold mb-2">Discovery</h4>
+            <p class="text-textMuted text-sm">Mapping your technical landscape and defining operational boundaries.</p>
           </div>
-        </li>
-        <li class="flex gap-4">
-          <span class="text-primary font-bold">2.</span>
-          <div>
-            <strong class="text-text">Proposal</strong>
-            <p class="text-sm">Custom scope and pricing tailored to your requirements.</p>
+        </div>
+        <div class="relative">
+          <span class="text-6xl font-bold text-primary/10 absolute -top-8 -left-2 z-0">02</span>
+          <div class="relative z-10">
+            <h4 class="text-text font-bold mb-2">Proposal</h4>
+            <p class="text-textMuted text-sm">Strategic scope and mission-critical pricing tailored to your requirements.</p>
           </div>
-        </li>
-        <li class="flex gap-4">
-          <span class="text-primary font-bold">3.</span>
-          <div>
-            <strong class="text-text">Engagement</strong>
-            <p class="text-sm">Deliverables completed per agreed scope.</p>
+        </div>
+        <div class="relative">
+          <span class="text-6xl font-bold text-primary/10 absolute -top-8 -left-2 z-0">03</span>
+          <div class="relative z-10">
+            <h4 class="text-text font-bold mb-2">Execution</h4>
+            <p class="text-textMuted text-sm">High-precision delivery of security artifacts and architectural guidance.</p>
           </div>
-        </li>
-        <li class="flex gap-4">
-          <span class="text-primary font-bold">4.</span>
-          <div>
-            <strong class="text-text">Follow-up</strong>
-            <p class="text-sm">Support, recommendations, and ongoing guidance.</p>
+        </div>
+        <div class="relative">
+          <span class="text-6xl font-bold text-primary/10 absolute -top-8 -left-2 z-0">04</span>
+          <div class="relative z-10">
+            <h4 class="text-text font-bold mb-2">Debrief</h4>
+            <p class="text-textMuted text-sm">Knowledge transfer, remediation support, and ongoing strategic counsel.</p>
           </div>
-        </li>
-      </ol>
+        </div>
+      </div>
     </section>
 
     <!-- CTA -->

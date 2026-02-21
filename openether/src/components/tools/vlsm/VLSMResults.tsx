@@ -36,17 +36,17 @@ const VLSMResults: React.FC<VLSMResultsProps> = ({ result }) => {
       {/* Utilization Bar */}
       <div>
         <div className="flex justify-between text-sm mb-1">
-          <span className="text-slate-400">Address Space Utilization</span>
-          <span className="text-slate-300">{result.utilizationPercent}%</span>
+          <span className="text-textMuted">Address Space Utilization</span>
+          <span className="text-text">{result.utilizationPercent}%</span>
         </div>
-        <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
+        <div className="h-3 bg-surface border border-white/5 rounded-full overflow-hidden">
           <div
             className={`h-full transition-all duration-300 ${
               result.utilizationPercent > 90
                 ? 'bg-red-500'
                 : result.utilizationPercent > 70
                 ? 'bg-yellow-500'
-                : 'bg-cyan-500'
+                : 'bg-primary'
             }`}
             style={{ width: `${Math.min(result.utilizationPercent, 100)}%` }}
           />
@@ -59,10 +59,10 @@ const VLSMResults: React.FC<VLSMResultsProps> = ({ result }) => {
           {result.warnings.map((warning, index) => (
             <div
               key={index}
-              className="flex items-start space-x-2 p-3 bg-yellow-900/20 border border-yellow-800/50 rounded-lg"
+              className="flex items-start space-x-2 p-3 bg-yellow-900/10 border border-yellow-800/30 rounded-lg"
             >
               <span className="text-yellow-500">⚠️</span>
-              <span className="text-yellow-200 text-sm">{warning}</span>
+              <span className="text-yellow-200/80 text-sm">{warning}</span>
             </div>
           ))}
         </div>
@@ -73,27 +73,27 @@ const VLSMResults: React.FC<VLSMResultsProps> = ({ result }) => {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-600">
-                <th className="text-left py-3 px-4 text-slate-400 font-medium">Name</th>
-                <th className="text-left py-3 px-4 text-slate-400 font-medium">Network</th>
-                <th className="text-center py-3 px-4 text-slate-400 font-medium">CIDR</th>
-                <th className="text-left py-3 px-4 text-slate-400 font-medium">First Host</th>
-                <th className="text-left py-3 px-4 text-slate-400 font-medium">Last Host</th>
-                <th className="text-center py-3 px-4 text-slate-400 font-medium">Hosts</th>
+              <tr className="border-b border-white/10">
+                <th className="text-left py-3 px-4 text-textMuted font-medium">Name</th>
+                <th className="text-left py-3 px-4 text-textMuted font-medium">Network</th>
+                <th className="text-center py-3 px-4 text-textMuted font-medium">CIDR</th>
+                <th className="text-left py-3 px-4 text-textMuted font-medium">First Host</th>
+                <th className="text-left py-3 px-4 text-textMuted font-medium">Last Host</th>
+                <th className="text-center py-3 px-4 text-textMuted font-medium">Hosts</th>
               </tr>
             </thead>
             <tbody>
               {result.allocations.map((allocation, index) => (
                 <tr
                   key={index}
-                  className="border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors"
+                  className="border-b border-white/5 hover:bg-white/5 transition-colors"
                 >
-                  <td className="py-3 px-4 text-slate-200 font-medium">{allocation.name}</td>
-                  <td className="py-3 px-4 text-cyan-400 font-mono">{allocation.networkAddress}</td>
-                  <td className="py-3 px-4 text-center text-slate-300">/{allocation.cidr}</td>
-                  <td className="py-3 px-4 text-slate-300 font-mono">{allocation.firstHost}</td>
-                  <td className="py-3 px-4 text-slate-300 font-mono">{allocation.lastHost}</td>
-                  <td className="py-3 px-4 text-center text-slate-300">{allocation.usableHosts}</td>
+                  <td className="py-3 px-4 text-text font-medium">{allocation.name}</td>
+                  <td className="py-3 px-4 text-primary font-mono">{allocation.networkAddress}</td>
+                  <td className="py-3 px-4 text-center text-textMuted">/{allocation.cidr}</td>
+                  <td className="py-3 px-4 text-textMuted font-mono">{allocation.firstHost}</td>
+                  <td className="py-3 px-4 text-textMuted font-mono">{allocation.lastHost}</td>
+                  <td className="py-3 px-4 text-center text-textMuted">{allocation.usableHosts}</td>
                 </tr>
               ))}
             </tbody>
@@ -103,7 +103,7 @@ const VLSMResults: React.FC<VLSMResultsProps> = ({ result }) => {
 
       {/* No Allocations */}
       {result.allocations.length === 0 && (
-        <div className="text-center py-8 text-slate-400">
+        <div className="text-center py-8 text-textMuted">
           No subnets could be allocated. Check your requirements and base network size.
         </div>
       )}
@@ -119,9 +119,9 @@ const StatCard: React.FC<{
   value: string;
   highlight?: boolean;
 }> = ({ label, value, highlight }) => (
-  <div className="p-4 bg-slate-700/50 rounded-lg text-center">
-    <div className="text-slate-400 text-xs uppercase tracking-wide mb-1">{label}</div>
-    <div className={`text-lg font-semibold ${highlight ? 'text-cyan-400' : 'text-slate-100'}`}>
+  <div className="p-4 bg-surface/80 rounded-lg text-center border border-white/5">
+    <div className="text-textMuted text-xs uppercase tracking-wide mb-1">{label}</div>
+    <div className={`text-lg font-semibold ${highlight ? 'text-primary' : 'text-text'}`}>
       {value}
     </div>
   </div>

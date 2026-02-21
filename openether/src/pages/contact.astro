@@ -14,88 +14,107 @@ if (import.meta.env.DEV && !import.meta.env.PUBLIC_FORMSPREE_ID) {
 
 <Layout title="Contact">
   <Container>
-    <div class="py-12">
-      <h1 class="text-4xl font-heading font-bold mb-4 text-text">Get in Touch</h1>
-      <p class="text-xl text-textMuted mb-12">
-        Have a project in mind? Let's discuss how I can help.
+    <div class="py-24">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        SECURE LINK: ESTABLISHING...
+      </div>
+      <h1 class="text-5xl md:text-7xl font-heading font-bold mb-4 text-text tracking-tight">Get in Touch</h1>
+      <p class="text-xl text-textMuted mb-16 font-light max-w-2xl leading-relaxed">
+        Initiate a secure communication channel to discuss your network security 
+        requirements and architectural challenges.
       </p>
       
-      <div class="grid md:grid-cols-2 gap-12">
+      <div class="grid lg:grid-cols-2 gap-16">
         <!-- Contact Form -->
         <div>
           <Card>
             <form 
-              class="space-y-4" 
+              class="space-y-6" 
               action={formspreeUrl} 
               method="POST"
             >
-              <div>
-                <label for="name" class="block text-sm font-medium mb-2 text-text">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  class="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:border-primary text-text"
-                />
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-xs font-mono uppercase tracking-widest mb-3 text-primary/60">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="OPERATOR NAME"
+                    class="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:border-primary/50 text-text font-mono text-sm placeholder:text-white/10"
+                  />
+                </div>
+                
+                <div>
+                  <label for="email" class="block text-xs font-mono uppercase tracking-widest mb-3 text-primary/60">Return Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="EMAIL@PROTO.COL"
+                    class="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:border-primary/50 text-text font-mono text-sm placeholder:text-white/10"
+                  />
+                </div>
               </div>
               
               <div>
-                <label for="email" class="block text-sm font-medium mb-2 text-text">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  class="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:border-primary text-text"
-                />
-              </div>
-              
-              <div>
-                <label for="message" class="block text-sm font-medium mb-2 text-text">Message</label>
+                <label for="message" class="block text-xs font-mono uppercase tracking-widest mb-3 text-primary/60">Transmission Payload</label>
                 <textarea
                   id="message"
                   name="message"
-                  rows="5"
+                  rows="6"
                   required
-                  class="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:border-primary text-text"
+                  placeholder="ENTER SECURE MESSAGE..."
+                  class="w-full px-4 py-3 bg-background border border-white/10 rounded-lg focus:outline-none focus:border-primary/50 text-text font-mono text-sm placeholder:text-white/10 resize-none"
                 ></textarea>
               </div>
               
               <button
                 type="submit"
-                class="w-full bg-primary text-background py-2 px-4 rounded-lg font-medium hover:bg-primaryHover transition-colors"
+                class="w-full bg-primary text-background py-4 px-6 rounded-lg font-bold hover:bg-primaryHover transition-all hover:scale-[1.01] active:scale-[0.99] uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(34,197,94,0.2)]"
               >
-                Send Message
+                Execute Transmission
               </button>
             </form>
             
             <script>
               // Client-side validation
               const form = document.querySelector('form');
-              form.addEventListener('submit', (e) => {
-                const email = form.querySelector('#email').value;
-                const message = form.querySelector('#message').value.trim();
-                
-                // Email validation
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                  alert('Please enter a valid email address');
-                  e.preventDefault();
-                  return;
-                }
-                
-                // Message length validation
-                if (message.length > 5000) {
-                  alert('Message is too long. Please limit to 5000 characters');
-                  e.preventDefault();
-                  return;
-                }
-                
-                // Sanitize message input
-                const messageInput = form.querySelector('#message');
-                messageInput.value = message.replace(/[<>]/g, '');
-              });
+              if (form) {
+                form.addEventListener('submit', (e) => {
+                  const emailInput = form.querySelector('#email') as HTMLInputElement;
+                  const messageInput = form.querySelector('#message') as HTMLTextAreaElement;
+                  
+                  if (!emailInput || !messageInput) return;
+
+                  const email = emailInput.value;
+                  const message = messageInput.value.trim();
+                  
+                  // Email validation
+                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    e.preventDefault();
+                    return;
+                  }
+                  
+                  // Message length validation
+                  if (message.length > 5000) {
+                    alert('Message is too long. Please limit to 5000 characters');
+                    e.preventDefault();
+                    return;
+                  }
+                  
+                  // Sanitize message input
+                  messageInput.value = message.replace(/[<>]/g, '');
+                });
+              }
             </script>
           </Card>
         </div>

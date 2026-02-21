@@ -61,9 +61,10 @@ const SubnetCalculatorApp: React.FC = () => {
   return (
     <div className="subnet-calculator-app space-y-6">
       {/* Input Form */}
-      <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-        <h2 className="text-xl font-semibold text-slate-100 mb-4">
-          IPv4 Subnet Calculator
+      <div className="bg-surface rounded-xl p-6 border border-white/5">
+        <h2 className="text-xl font-semibold text-text mb-4 font-mono text-primary flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+          IPv4 SUBNET CALCULATOR
         </h2>
         <SubnetInputForm
           address={data.address}
@@ -80,17 +81,19 @@ const SubnetCalculatorApp: React.FC = () => {
       {/* Results */}
       {result && (
         <>
-          <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-            <h3 className="text-lg font-semibold text-slate-100 mb-4">
-              Network Information
+          <div className="bg-surface rounded-xl p-6 border border-white/5">
+            <h3 className="text-lg font-semibold text-text mb-4 font-mono text-primary flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+              NETWORK INFORMATION
             </h3>
             <SubnetResults result={result} />
           </div>
 
           {/* Binary Visualization */}
-          <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-            <h3 className="text-lg font-semibold text-slate-100 mb-4">
-              Binary Visualization
+          <div className="bg-surface rounded-xl p-6 border border-white/5">
+            <h3 className="text-lg font-semibold text-text mb-4 font-mono text-primary flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+              BINARY VISUALIZATION
             </h3>
             <BinaryGridVisualization
               ipAddress={result.networkAddress}
@@ -103,16 +106,17 @@ const SubnetCalculatorApp: React.FC = () => {
 
       {/* History Panel */}
       {history.length > 0 && (
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div className="bg-surface rounded-xl p-6 border border-white/5">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-slate-100">
-              Calculation History
+            <h3 className="text-lg font-semibold text-text font-mono text-primary flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+              HISTORY
             </h3>
             <button
               onClick={clearHistory}
-              className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
+              className="text-xs font-mono text-textMuted hover:text-primary transition-colors"
             >
-              Clear History
+              [ CLEAR_LOGS ]
             </button>
           </div>
           <div className="space-y-2 max-h-60 overflow-y-auto">
@@ -120,12 +124,12 @@ const SubnetCalculatorApp: React.FC = () => {
               <button
                 key={entry.id}
                 onClick={() => handleLoadFromHistory(entry)}
-                className="w-full text-left p-3 bg-slate-700/50 rounded hover:bg-slate-700 transition-colors"
+                className="w-full text-left p-3 bg-background border border-white/5 rounded-lg hover:border-primary/30 transition-all group"
               >
-                <span className="text-cyan-400 font-mono">
+                <span className="text-primary font-mono group-hover:glow-sm transition-all">
                   {entry.input.address}/{entry.input.cidr}
                 </span>
-                <span className="text-slate-400 text-sm ml-2">
+                <span className="text-textMuted text-xs font-mono ml-4">
                   → {entry.result.networkAddress}
                 </span>
               </button>
