@@ -2,6 +2,7 @@
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Meta from '../components/seo/Meta.astro';
+import { CelestialGlobe } from '../components/animations/CelestialGlobe';
 import '../styles/global.css';
 
 interface Props {
@@ -17,9 +18,16 @@ const { title, description = 'OpenEther - Network Security Consulting' } = Astro
   <head>
     <Meta title={title} description={description} />
   </head>
-  <body class="bg-background text-text min-h-screen flex flex-col">
+  <body class="bg-background text-text min-h-screen flex flex-col relative overflow-x-hidden">
+    <!-- Animated Background Layer -->
+    <CelestialGlobe client:only="react" />
+
+    <!-- Texture Overlays -->
+    <div class="fixed inset-0 pointer-events-none bg-scanlines z-50"></div>
+    <div class="fixed inset-0 pointer-events-none bg-grain z-40"></div>
+
     <Header />
-    <main class="flex-1">
+    <main class="flex-1 relative z-10">
       <slot />
     </main>
     <Footer />

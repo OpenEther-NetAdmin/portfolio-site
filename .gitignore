@@ -11,7 +11,8 @@ build/
 dist/
 
 # Knowledge Base DB
-knowledge-base/db/qdrant_data/
+knowledge-base/
+CLAUDE.md
 
 # Misc
 .DS_Store
@@ -22,10 +23,9 @@ knowledge-base/db/qdrant_data/
 .env.production.local
 
 # Kilocode
-.kilocode/transcripts/
-.kilocode/handoffs/
-.kilocode/memory/kb_queries_*.md
-.kilocode/memory/kb_updates_*.md
+.kilocode/
+.kilocodeignore/
+.kilocodemodes/
 
 # Logs
 npm-debug.log*
